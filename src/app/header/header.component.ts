@@ -46,4 +46,11 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  deletePost(id: number) {
+    this.http.delete(this.postsUrl + '/' + id)
+    .subscribe((result) => {
+      setTimeout(() => this.getPostData(), 200);
+    });
+  }
+
 }

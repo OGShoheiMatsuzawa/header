@@ -11,5 +11,9 @@
   <button type="submit">送信</button>
 </form>
 <ul *ngFor="let post of posts">
-  <li>{{ post.created_at }}<br>{{ post.title }}</li>
+  <li>
+    {{ post.created_at | date: 'y年M月d日(E) h:mm' }}<br>
+    {{ post.title }}<br>
+    <small style="color: #dd0000; text-decoration: underline; cursor: pointer;" (click)="deletePost(post.id)">削除</small>
+  </li>
 </ul>
