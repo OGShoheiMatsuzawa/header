@@ -5,6 +5,11 @@
 <br>
 
 <h2>Posts</h2>
+<form [formGroup]="postForm" (ngSubmit)="postPostData(postForm.value)">
+  <label>title:</label>
+  <input type="text" formControlName="title">
+  <button type="submit">送信</button>
+</form>
 <ul *ngFor="let post of posts">
   <li>{{ post.created_at }}<br>{{ post.title }}</li>
 </ul>
