@@ -1,4 +1,10 @@
 <p>header works!</p>
-<p>uid: {{ this.header.uid }}</p>
-<p>access-token: {{ this.header.access_token }}</p>
-<p>client: {{ this.header.client }}</p>
+<p>uid: {{ header.uid }}</p>
+<p>access-token: {{ header.access_token }}</p>
+<p>client: {{ header.client }}</p>
+<br>
+
+<h2>Posts</h2>
+<ul *ngFor="let post of posts">
+  <li>{{ post.created_at }}<br>{{ post.title }}</li>
+</ul>
