@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { Header } from '../header';
@@ -30,18 +30,26 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.getPostData();
+    this.getHeader();
   }
 
   getPostData() {
     this.http.get(this.postsUrl)
-    .subscribe((result: any) => {
-      this.posts = result.data; // keyがdata, valueが投稿の配列。左記はRails APIのjson出力で設定
+    .subscribe((res: any) => {
+      this.posts = res.data; // keyがdata, valueが投稿の配列。左記はRails APIのjson出力で設定
     });
+  }
+
+  getHeader() {
+    this.http.get<any>(this.postsUrl, { observe: 'response'})
+    .subscribe(res => {
+      console.log(res.headers);
+    })
   }
 
   postPostData(data: any) {
     this.http.post(this.postsUrl, data)
-    .subscribe((result) => {
+    .subscribe((response) => {
       setTimeout(() => this.getPostData() , 200);
     });
   }

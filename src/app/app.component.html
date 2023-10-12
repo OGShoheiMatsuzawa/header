@@ -1,6 +1,14 @@
-<h1>Home</h1>
-<nav>
-  <a routerLink="/">home</a>
-  <a routerLink="/header">header</a>
-</nav>
-<router-outlet></router-outlet>
+<header>
+  <div class="container">
+    <h1>Home</h1>
+    <nav>
+      <a routerLink="/">home</a>
+      <a routerLink="/header">header</a>
+      <a routerLink="signin">signin</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
