@@ -1,9 +1,11 @@
 <p>signin works!</p>
 
 <form [formGroup]="signinForm" (ngSubmit)="signin(signinForm.value)">
-  <label for="email">Email: </label>
-  <input id="email" type="email" formControlName="email"><br>
-  <label for="password">Password: </label>
-  <input id="password" type="password" formControlName="password"><br>
-  <button type="submit">ログイン</button>
+  <div formGroupName="user">
+    <label for="email">Email: </label>
+    <input id="email" type="email" formControlName="email"><br>
+    <label for="password">Password: </label>
+    <input id="password" type="password" formControlName="password"><br>
+    <button type="submit">ログイン</button>
+  </div>
 </form>

@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 
 export class SigninComponent {
 
-  private url: string = 'https://dev-sandbox-mat01-be.sakuramobile.jp/auth/sign_in';
+  private url: string = 'https://dev-sandbox-mat01-be.sakuramobile.jp/users/sign_in';
 
   signinForm = new FormGroup({
-    email: new FormControl('', []),
-    password: new FormControl('', [])
+    user: new FormGroup({
+      email: new FormControl('', []),
+      password: new FormControl('', [])
+    }),
   });
 
   constructor(
@@ -24,15 +26,18 @@ export class SigninComponent {
   ){}
 
   signin(data: any) {
-    this.http.post(this.url, data, { observe: 'response' })
+    // this.http.post(this.url, data, { observe: 'response' })
+    this.http.post(this.url, data, { responseType: 'text' })
     .subscribe((res) => {
-      console.log(res);
+      // console.log(res);
+      /*
       const access_token = res.headers.get('access-token');
       const client = res.headers.get('client');
       const uid = res.headers.get('uid');
       console.log(`access-token: ${access_token}`);
       console.log(`client: ${client}`);
       console.log(`uid: ${uid}`);
+      */
       this.router.navigate(['header']);
     });
   }
